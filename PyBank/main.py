@@ -11,7 +11,7 @@ with open(csvpath,newline='') as csvfile:
     monthly_changes = []
 
     for row in csvreader:
-        #print(row)
+
         total_months = total_months + 1
 
         revenue.append(row[1])
@@ -19,22 +19,21 @@ with open(csvpath,newline='') as csvfile:
         total_revenue = total_revenue + int(row[1])
 
     for i in range(1,len(revenue)):
+
         monthly_changes.append(int(revenue[i]) - int(revenue[i-1]))
 
-        #if int(row[1]) > greatest_increase:
-            #greatest_increase = int(row[1])
-            #increase_month = row[0]
+        average_change = sum(monthly_changes) / len(monthly_changes)
 
-        #if int(row[1]) < greatest_decrease:
-            #greatest_decrease = int(row[1])
-            #decrease_month = row[0]
+        greatest_increase = max(monthly_changes)
 
-    print(monthly_changes)
+        greatest_decrease = min(monthly_changes)
+
+
 
     print("Financial Analysis")
     print("----------------------------")
-    print("Total Months: " + str(total_months))
-    print("Total: $" + str(total_revenue))
-    print("Average Change: $")
-    print("Greatest Increase in Profits: ")
-    print("Greatest Decrease in Profits: ")
+    print("Total Months: ", str(total_months))
+    print("Total: $", str(total_revenue))
+    print("Average Change: $", str(average_change))
+    print("Greatest Increase in Profits: ", "$", str(greatest_increase))
+    print("Greatest Decrease in Profits: ", "$", str(greatest_decrease))
