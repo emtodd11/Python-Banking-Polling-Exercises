@@ -63,16 +63,21 @@ with open(csvpath,newline='') as csvfile:
         winner = candidates[3]
 
 
-    print("Election Results")
-    print("-------------------------")
-    print(f"Total Votes: {vote_count}")
-    print("-------------------------")
-    print(f"{candidates[0]}: {candidate0_percent}% ({candidate0_votes})")
-    print(f"{candidates[1]}: {candidate1_percent}% ({candidate1_votes})")
-    print(f"{candidates[2]}: {candidate2_percent}% ({candidate2_votes})")
-    print(f"{candidates[3]}: {candidate3_percent}% ({candidate3_votes})")
-    print("-------------------------")
-    print(f"Winner: {winner}")
-    print("-------------------------")
+    output = "Election Results\n"
+    output += "-------------------------\n"
+    output += "Total Votes: " + str(vote_count) + "\n"
+    output += "-------------------------\n"
+    output += str(candidates[0]) + ": " + str(candidate0_percent) + "% (" + str(candidate0_votes) + ")\n"
+    output += str(candidates[1]) + ": " + str(candidate1_percent) + "% (" + str(candidate1_votes) + ")\n"
+    output += str(candidates[2]) + ": " + str(candidate2_percent) + "% (" + str(candidate2_votes) + ")\n"
+    output += str(candidates[3]) + ": " + str(candidate3_percent) + "% (" + str(candidate3_votes) + ")\n"
+    output += "-------------------------\n"
+    output += "Winner: " + str(winner) + "\n"
+    output += "-------------------------\n"
 
+    print(output)
 
+    file = open("Emily_Todd_Python-Challenge_PyPoll.txt","w")
+    file.write(output)
+
+    file.close()
