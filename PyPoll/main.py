@@ -14,6 +14,7 @@ with open(csvpath,newline='') as csvfile:
     candidate1_votes = 0
     candidate2_votes = 0
     candidate3_votes = 0
+    winner = 0
 
     #create list to store candidate names
     candidates = []
@@ -43,13 +44,24 @@ with open(csvpath,newline='') as csvfile:
             candidate3_votes +=1
 
     #calculate the percentage of total votes for each candidate
-    candidate0_percent = candidate0_votes / vote_count * 100
-    candidate1_percent = candidate1_votes / vote_count * 100
-    candidate2_percent = candidate2_votes / vote_count * 100
-    candidate3_percent = candidate3_votes / vote_count * 100
+    candidate0_percent = round(candidate0_votes / vote_count * 100, 3)
+    candidate1_percent = round(candidate1_votes / vote_count * 100, 3)
+    candidate2_percent = round(candidate2_votes / vote_count * 100, 3)
+    candidate3_percent = round(candidate3_votes / vote_count * 100, 3)
 
     #find the winner
-    
+    if candidate0_votes > candidate1_votes and candidate0_votes > candidate2_votes and candidate0_votes > candidate3_votes:
+        winner = candidates[0]
+
+    if candidate1_votes > candidate0_votes and candidate1_votes > candidate2_votes and candidate1_votes > candidate3_votes:
+        winner = candidates[1]
+
+    if candidate2_votes > candidate0_votes and candidate2_votes > candidate1_votes and candidate2_votes > candidate3_votes:
+        winner = candidates[2]
+
+    if candidate3_votes > candidate0_votes and candidate3_votes > candidate1_votes and candidate3_votes > candidate2_votes:
+        winner = candidates[3]
+
 
     print("Election Results")
     print("-------------------------")
@@ -60,7 +72,7 @@ with open(csvpath,newline='') as csvfile:
     print(f"{candidates[2]}: {candidate2_percent}% ({candidate2_votes})")
     print(f"{candidates[3]}: {candidate3_percent}% ({candidate3_votes})")
     print("-------------------------")
-    print(f"Winner: ")
+    print(f"Winner: {winner}")
     print("-------------------------")
 
 
