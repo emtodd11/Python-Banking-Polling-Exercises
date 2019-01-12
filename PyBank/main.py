@@ -41,10 +41,17 @@ with open(csvpath,newline='') as csvfile:
         increase_month = months[monthly_changes.index(max(monthly_changes))]
         decrease_month = months[monthly_changes.index(min(monthly_changes))]
 
-    print("Financial Analysis")
-    print("----------------------------")
-    print("Total Months: ", str(total_months))
-    print("Total: $", str(total_revenue))
-    print("Average Change: $", str(average_change))
-    print("Greatest Increase in Profits: ", increase_month, "$", str(greatest_increase))
-    print("Greatest Decrease in Profits: ", decrease_month, "$", str(greatest_decrease))
+    output = "Financial Analysis\n"
+    output += "----------------------------\n"
+    output += "Total Months: " + str(total_months) + "\n"
+    output += "Total: $" + str(total_revenue) + "\n"
+    output += "Average Change: $" + str(average_change) + "\n"
+    output += "Greatest Increase in Profits: " + increase_month + " $" + str(greatest_increase) + "\n"
+    output += "Greatest Decrease in Profits: " + decrease_month + " $" + str(greatest_decrease) + "\n"
+
+    print(output)
+
+    file = open("Emily_Todd_Python-Challenge_PyBank.txt","w")
+    file.write(output)
+
+    file.close()
